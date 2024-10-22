@@ -11,7 +11,9 @@ public class PlayerSpawn : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        player = PhotonNetwork.Instantiate("Player", transform.position, transform.rotation);
+        string selectAvatar = (string)PhotonNetwork.LocalPlayer.CustomProperties["avatar"];
+
+        player = PhotonNetwork.Instantiate(selectAvatar, transform.position, transform.rotation);
     }
 
     public override void OnLeftRoom()

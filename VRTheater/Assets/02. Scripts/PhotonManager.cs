@@ -64,7 +64,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         PhotonNetwork.LoadLevel("MainScene");
-        Debug.Log(PhotonNetwork.CurrentRoom.Name);
     }
 
     public void SaveName()
