@@ -6,19 +6,17 @@ using UnityEngine;
 
 public class PlayerSpawn : MonoBehaviourPunCallbacks
 {
-    GameObject player;
-
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        string selectAvatar = (string)PhotonNetwork.LocalPlayer.CustomProperties["avatar"];
+        string selectAvatar = (string)PhotonNetwork.LocalPlayer.CustomProperties["Avatar"];
 
-        player = PhotonNetwork.Instantiate(selectAvatar, transform.position, transform.rotation);
+        PhotonNetwork.Instantiate(selectAvatar, transform.position, transform.rotation);
+        Debug.Log(PhotonNetwork.CurrentRoom.Name); 
     }
 
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
-        PhotonNetwork.Destroy(player);
     }
 }

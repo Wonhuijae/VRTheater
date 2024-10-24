@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
         headPos = o.transform.Find("Camera Offset/Main Camera");
         leftPos = o.transform.Find("Camera Offset/Left Controller");
-        rightPos = o.transform.Find("Camera Offset/right Controller");
+        rightPos = o.transform.Find("Camera Offset/Right Controller");
 
         if(pv.IsMine)
         {
@@ -36,6 +36,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (headPos == null) Debug.Log("headPos null");
+        if (leftPos == null) Debug.Log("leftPos null");
+        if (rightPos == null) Debug.Log("rightPos null");
+
+        return;
+
         if (pv.IsMine)
         {
             CopyMove(head, headPos);

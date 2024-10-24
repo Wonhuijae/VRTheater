@@ -1,7 +1,10 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class SelectAvatar : MonoBehaviour
 {
@@ -29,5 +32,13 @@ public class SelectAvatar : MonoBehaviour
         selctedImage = _gameObject;
         selection = charNames[selctedImage];
         Debug.Log(selection);
+    }
+
+    public void SaveSelectedAvatar()
+    {
+        if(selctedImage == null) return;
+
+        Hashtable cp = new Hashtable { { "Avatar", selection } };
+        PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
     }
 }

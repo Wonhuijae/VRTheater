@@ -50,6 +50,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
+        PhotonNetwork.LoadLevel("MainScene");
+
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 20;
 
@@ -63,7 +65,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        PhotonNetwork.LoadLevel("MainScene");
     }
 
     public void SaveName()
